@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 class Usuario{
 
@@ -20,7 +20,7 @@ class Usuario{
         
         // Verificar se já é cadastrado
         global $pdo;
-        $sql = $pdo->prepare("SELECT id_usuário FROM usuarios WHERE email = :e");
+        $sql = $pdo->prepare("SELECT id_usuario FROM usuarios WHERE email = :e");
         $sql->bindValue(":e", $email);
         $sql->execute();
 
@@ -32,7 +32,7 @@ class Usuario{
             $sql->bindValue(":n", $nome);
             $sql->bindValue(":t", $telefone);
             $sql->bindValue(":e", $email);
-            $sql->bindValue(":s", $senha);
+            $sql->bindValue(":s", md5($senha));
             $sql->execute();
             return true;
         }
@@ -40,8 +40,25 @@ class Usuario{
 
     public function login($email, $senha){
         global $pdo;
+        //verificar se oemail e senha estão cadastrados
 
+        $sql = $pdo->prepare("SELECT id_usuario FROM usuarios where email = :e AND senha = :s");
+        $sql-> bindValue(":e", $email);
+        $sql-> bindValue(":s", md5($senha));
+        $sql-> execute();
+        if($sql->rowCount() > 0){
+            //Entrar no sistema(sessao)
+            $dado = $sql->fetch();
 
+            SESSION_START();
+            $_SESSION['id_usuario'] = $dado['id_usuario'];
+            return true; //login com sucesso
+
+        }else{
+            //não foi possivel logar
+            return false; 
+
+        }
 
 
 
