@@ -34,6 +34,7 @@ input{
     margin: 100px auto 0 auto;
 }
 
+
 a{
     color:black;
     text-decoration: none;
@@ -51,4 +52,14 @@ input[type=submit]{
 
 a:hover{
     text-decoration: underline;
+}
+
+.msg-erro{
+    width: 420px;
+    margin: 10px auto;
+}
+
+.msg-sucesso{
+    width: 420px;
+    margin: 10px auto;
 }

@@ -51,28 +51,49 @@
                             // Procesguindo com o cadastramento.
                             // Caso True, o cadastramento foi ok.
                             if($u->cadastrar($nome, $telefone, $email, $senha)){
-                                echo "Cadastrado com sucesso! Acesse para entrar";
+                                ?> 
+                                <div class="msg-sucesso">
+                                Cadastrado com sucesso! Acesse para entrar";
+                                </div>
+                                <?php
+
                             }else{
                                 // Caso false, já está cadastrado.
-                                echo "Ja está cadastrado!";
+                                ?>
+                                <div class="msg-erro">
+                                   Ja está cadastrado!
+                                </div>
+                                <?php
                             }
                             
                         }else{
                             // Os campos são diferentes!
-                            echo "Senha e confirmar senha não correspondem!";
+                            ?> 
+                            <div class="msg-erro">
+                            Senha e confirmar senha não correspondem!
+                            </div>
+                            <?php
                         }
                     }
                     // Erro na conexão com o banco
                     else{
-                        echo "Erro" .$u->msgErro;
+                        ?>
+                        <div class="msg-erro">
+                            <?php echo "Erro" .$u->msgErro; ?>
+                        </div>
+                        <?php
                     }
 
                 }
                 else{
                     // Caso esteja algum campo vazio
-                    echo "Preencha todos os campos";
+                    ?>
+                    <div class="msg-erro">
+                       Preencha todos os campos
+                    </div>
+                    <?php
                 }
-
+                    
             }
         
         ?>
