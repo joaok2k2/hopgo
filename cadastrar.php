@@ -53,8 +53,13 @@
                             if($u->cadastrar($nome, $telefone, $email, $senha)){
                                 ?> 
                                 <div class="msg-sucesso">
-                                Cadastrado com sucesso! Acesse para entrar";
+                                Cadastrado com sucesso! 
                                 </div>
+                                <div class="msg-sucesso">
+                                Clique abaixo para entrar!
+                                <a href="index.php">login</a>
+                                </div>
+                                
                                 <?php
 
                             }else{
@@ -89,7 +94,7 @@
                     // Caso esteja algum campo vazio
                     ?>
                     <div class="msg-erro">
-                       Preencha todos os campos
+                       Preencha todos os campos!
                     </div>
                     <?php
                 }

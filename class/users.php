@@ -40,7 +40,7 @@ class Usuario{
 
     public function login($email, $senha){
         global $pdo;
-        //verificar se oemail e senha estão cadastrados
+        //verificar se o email e senha estão cadastrados
 
         $sql = $pdo->prepare("SELECT id_usuario FROM usuarios where email = :e AND senha = :s");
         $sql-> bindValue(":e", $email);
